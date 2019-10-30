@@ -20,7 +20,7 @@ FSJS project 2 - List Filter and Pagination
 
 addEventListener('DOMContentLoaded', () => {
    const studentList = document.querySelectorAll('.student-item');
-   const studentPerPage = 10;
+   const itemsPerPage = 10;
 
    /*** 
       Create the `showPage` function to hide all of the items in the 
@@ -38,13 +38,33 @@ addEventListener('DOMContentLoaded', () => {
    ***/
 
    // create function that hides all element of the student list items
-   function showPage(list, page) {
-      const startIndex = (page * studentPerPage) - studentPerPage;
+   function showPage(page,list) {
+      //
+      
+      const startIndex = (page * itemsPerPage) - itemsPerPage;
+      console.log(startIndex)
       // end index
-      const endIndex = page * studentPerPage;
+      const endIndex = page * itemsPerPage;
+      console.log(endIndex)
+      /*
+      Loop over items in the list parameter
+      -- Inside the loop, display any list item with an 
+      -- index that is greater than or equal to the start index variable and less than the end index variable.
+      */
+     for(let i = 0; i < list.length; i++){
+      
+        if( list[i] >= startIndex && list[i] < endIndex){
+         console.log(list[i]);  
+         list[i].style.display = '';
+        } else {
+           list[i].style.display = 'none';
+        }
+      
+      // console.log(list[i])
+     }
   
    }
-   showPage();
+   showPage(2, studentList);
 
    /*** 
       Create the `appendPageLinks function` to generate, append, and add 
