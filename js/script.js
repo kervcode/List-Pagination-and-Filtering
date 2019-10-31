@@ -53,7 +53,7 @@ addEventListener('DOMContentLoaded', () => {
       */
      for(let i = 0; i < list.length; i++){
       
-        if( list[i] >= startIndex && list[i] < endIndex){
+        if( i >= startIndex && i < endIndex){
          console.log(list[i]);  
          list[i].style.display = '';
         } else {
@@ -64,7 +64,7 @@ addEventListener('DOMContentLoaded', () => {
      }
   
    }
-   showPage(2, studentList);
+   showPage(1, studentList);
 
    /*** 
       Create the `appendPageLinks function` to generate, append, and add 
