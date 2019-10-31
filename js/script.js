@@ -18,7 +18,7 @@ FSJS project 2 - List Filter and Pagination
 ***/
 // grab all the the student list in the HTML DOM
 
-addEventListener('DOMContentLoaded', () => {
+// addEventListener('DOMContentLoaded', () => {
    const studentList = document.querySelectorAll('.student-item');
    const itemsPerPage = 10;
 
@@ -53,18 +53,62 @@ addEventListener('DOMContentLoaded', () => {
      }
   
    }
-   showPage(1, studentList);
+   showPage(1, studentList); 
 
    /*** 
       Create the `appendPageLinks function` to generate, append, and add 
       functionality to the pagination buttons.
    ***/
- 
+  function appendPageLinks(list){
+     const studentList = document.querySelector('.student-list')
+     const div = document.createElement('DIV');
+     div.className = 'pagination';
+     const ul = document.createElement('UL');
+     const li = document.createElement('LI');
+     const a = document.createElement('A');
+     a.setAttribute('href', '#');
+     a.textContent = '1';
 
+     li.appendChild(a);
+     ul.appendChild(li);
+     div.appendChild(ul);
 
+   for (let i = 0; i < list.length % itemsPerPage; i++) {
+      
+   }
+console.log(div);
+console.log(studentList.parentElement)
+    
+     
+  }
+
+  appendPageLinks('');
+/*
+  <!-- pagination HTML to create dynamically -->
+  <div class="pagination">
+    <ul>
+      <li>
+        <a class="active" href="#">1</a>
+      </li>
+       <li>
+        <a href="#">2</a>
+      </li>
+       <li>
+        <a href="#">3</a>
+      </li>
+       <li>
+        <a href="#">4</a>
+      </li>
+       <li>
+        <a href="#">5</a>
+      </li>
+    </ul>
+  </div>
+  <!-- end pagination -->
+*/
 
 
 
    // Remember to delete the comments that came with this file, and replace them with your own code comments.
 
-});
+// });
