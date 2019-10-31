@@ -39,28 +39,17 @@ addEventListener('DOMContentLoaded', () => {
 
    // create function that hides all element of the student list items
    function showPage(page,list) {
-      //
-      
       const startIndex = (page * itemsPerPage) - itemsPerPage;
-      console.log(startIndex)
-      // end index
       const endIndex = page * itemsPerPage;
       console.log(endIndex)
-      /*
-      Loop over items in the list parameter
-      -- Inside the loop, display any list item with an 
-      -- index that is greater than or equal to the start index variable and less than the end index variable.
-      */
+   //loop over the student list, print 10 student according the index position
      for(let i = 0; i < list.length; i++){
-      
         if( i >= startIndex && i < endIndex){
-         console.log(list[i]);  
-         list[i].style.display = '';
+         list[i].style.display = 'block';
         } else {
            list[i].style.display = 'none';
         }
-      
-      // console.log(list[i])
+    
      }
   
    }
@@ -70,6 +59,7 @@ addEventListener('DOMContentLoaded', () => {
       Create the `appendPageLinks function` to generate, append, and add 
       functionality to the pagination buttons.
    ***/
+ 
 
 
 
