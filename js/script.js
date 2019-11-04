@@ -42,47 +42,56 @@ FSJS project 2 - List Filter and Pagination
       const startIndex = (page * itemsPerPage) - itemsPerPage;
       const endIndex = page * itemsPerPage;
       console.log(endIndex)
-   //loop over the student list, print 10 student according the index position
-     for(let i = 0; i < list.length; i++){
-        if( i >= startIndex && i < endIndex){
-         list[i].style.display = 'block';
-        } else {
-           list[i].style.display = 'none';
-        }
-    
-     }
-  
+      //loop over the student list, print 10 student according the index position
+      for(let i = 0; i < list.length; i++){
+          if( i >= startIndex && i < endIndex){
+          list[i].style.display = 'block';
+          } else {
+            list[i].style.display = 'none';
+          }
+      }
+      console.log('student list: ' + studentList.length);
+      console.log(startIndex);
+      console.log(endIndex);
    }
-   showPage(1, studentList); 
+   showPage(5, studentList); 
 
    /*** 
       Create the `appendPageLinks function` to generate, append, and add 
       functionality to the pagination buttons.
    ***/
   function appendPageLinks(list){
+     const page = document.querySelector('.page');
      const studentList = document.querySelector('.student-list')
      const div = document.createElement('DIV');
      div.className = 'pagination';
-     const ul = document.createElement('UL');
-     const li = document.createElement('LI');
-     const a = document.createElement('A');
-     a.setAttribute('href', '#');
-     a.textContent = '1';
+     page.appendChild(div);
 
-     li.appendChild(a);
-     ul.appendChild(li);
+     const ul = document.createElement('UL');
      div.appendChild(ul);
 
-   for (let i = 0; i < list.length % itemsPerPage; i++) {
-      
-   }
-console.log(div);
-console.log(studentList.parentElement)
-    
+     let pageNumber = Math.ceil(list.length / itemsPerPage),
+         i = 1;
      
+     
+    while (i < pageNumber) {
+      let li = document.createElement('LI');
+      ul.appendChild(li);
+ 
+      let a = document.createElement('A');
+      a.setAttribute('href', '#');
+      a.textContent = i;
+ 
+      li.appendChild(a);
+      
+      i++;
+    }
+    
+     const all_a = document.querySelectorAll(document.body.li.children );
+     console.log(all_a)
   }
 
-  appendPageLinks('');
+  appendPageLinks(studentList);
 /*
   <!-- pagination HTML to create dynamically -->
   <div class="pagination">
@@ -105,7 +114,7 @@ console.log(studentList.parentElement)
     </ul>
   </div>
   <!-- end pagination -->
-*/
+  */      
 
 
 
