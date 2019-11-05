@@ -54,7 +54,7 @@ FSJS project 2 - List Filter and Pagination
       console.log(startIndex);
       console.log(endIndex);
    }
-   showPage(5, studentList); 
+   showPage(6, studentList); 
 
    /*** 
       Create the `appendPageLinks function` to generate, append, and add 
@@ -74,50 +74,29 @@ FSJS project 2 - List Filter and Pagination
          i = 1;
      
      
-    while (i < pageNumber) {
+    while (i <= pageNumber) {
       let li = document.createElement('LI');
       ul.appendChild(li);
  
       let a = document.createElement('A');
       a.setAttribute('href', '#');
       a.textContent = i;
- 
       li.appendChild(a);
-      
       i++;
     }
-    
-     const all_a = document.querySelectorAll(document.body.li.children );
-     console.log(all_a)
+  }
+
+  //select all a elements
+  const a = document.getElementsByTagName('a');
+  // console.log(link);
+  //remove active class
+  for (let i = 0; i < a.length; i++){
+   // for (let i of a) {
+    console.log('Index of link: '+ a);
   }
 
   appendPageLinks(studentList);
-/*
-  <!-- pagination HTML to create dynamically -->
-  <div class="pagination">
-    <ul>
-      <li>
-        <a class="active" href="#">1</a>
-      </li>
-       <li>
-        <a href="#">2</a>
-      </li>
-       <li>
-        <a href="#">3</a>
-      </li>
-       <li>
-        <a href="#">4</a>
-      </li>
-       <li>
-        <a href="#">5</a>
-      </li>
-    </ul>
-  </div>
-  <!-- end pagination -->
-  */      
-
-
-
+    
    // Remember to delete the comments that came with this file, and replace them with your own code comments.
 
 // });
