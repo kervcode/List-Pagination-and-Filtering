@@ -18,7 +18,7 @@ FSJS project 2 - List Filter and Pagination
 ***/
 // grab all the the student list in the HTML DOM
 
-// addEventListener('DOMContentLoaded', () => {
+addEventListener('DOMContentLoaded', () => {
    const studentList = document.querySelectorAll('.student-item');
    const itemsPerPage = 10;
 
@@ -84,19 +84,26 @@ FSJS project 2 - List Filter and Pagination
       li.appendChild(a);
       i++;
     }
+    //select all a elements
+   const links = document.getElementsByTagName('A');
+   console.log(links);
+   //remove active class
+   for (let i = 0; i < links.length; i++){
+      let link = links[i];
+      // console.log(link);
+      link.classList.remove('active');
+      if (link.innerHTML === '1'){
+         link.classList.add('active');
+      }
+
+   }
+
   }
 
-  //select all a elements
-  const a = document.getElementsByTagName('a');
-  // console.log(link);
-  //remove active class
-  for (let i = 0; i < a.length; i++){
-   // for (let i of a) {
-    console.log('Index of link: '+ a);
-  }
+  
 
   appendPageLinks(studentList);
     
    // Remember to delete the comments that came with this file, and replace them with your own code comments.
 
-// });
+});
