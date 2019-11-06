@@ -6,19 +6,10 @@ FSJS project 2 - List Filter and Pagination
 // Study guide for this project - https://drive.google.com/file/d/1OD1diUsTMdpfMDv677TfL1xO2CEkykSz/view?usp=sharing
 
 
-/*** 
-   Add your global variables that store the DOM elements you will 
-   need to reference and/or manipulate. 
-   
-   But be mindful of which variables should be global and which 
-   should be locally scoped to one of the two main functions you're 
-   going to create. A good general rule of thumb is if the variable 
-   will only be used inside of a function, then it can be locally 
-   scoped to that function.
-***/
+
 // grab all the the student list in the HTML DOM
 
-addEventListener('DOMContentLoaded', () => {
+addEventListener('load', () => {
    const studentList = document.querySelectorAll('.student-item');
    const itemsPerPage = 10;
 
@@ -50,11 +41,12 @@ addEventListener('DOMContentLoaded', () => {
             list[i].style.display = 'none';
           }
       }
-      console.log('student list: ' + studentList.length);
-      console.log(startIndex);
-      console.log(endIndex);
+      // console.log('student list: ' + studentList.length);
+      // console.log(startIndex);
+      // console.log(endIndex);
    }
-   showPage(6, studentList); 
+   
+   showPage(1, studentList); 
 
    /*** 
       Create the `appendPageLinks function` to generate, append, and add 
@@ -62,7 +54,6 @@ addEventListener('DOMContentLoaded', () => {
    ***/
   function appendPageLinks(list){
      const page = document.querySelector('.page');
-     const studentList = document.querySelector('.student-list')
      const div = document.createElement('DIV');
      div.className = 'pagination';
      page.appendChild(div);
@@ -71,32 +62,50 @@ addEventListener('DOMContentLoaded', () => {
      div.appendChild(ul);
 
      let pageNumber = Math.ceil(list.length / itemsPerPage),
-         i = 1;
-     
-     
-    while (i <= pageNumber) {
-      let li = document.createElement('LI');
-      ul.appendChild(li);
- 
-      let a = document.createElement('A');
-      a.setAttribute('href', '#');
-      a.textContent = i;
-      li.appendChild(a);
-      i++;
-    }
-    //select all a elements
-   const links = document.getElementsByTagName('A');
-   console.log(links);
-   //remove active class
-   for (let i = 0; i < links.length; i++){
-      let link = links[i];
-      // console.log(link);
-      link.classList.remove('active');
-      if (link.innerHTML === '1'){
-         link.classList.add('active');
+         ii = 1;
+      while (ii <= pageNumber) {
+         let li = document.createElement('LI');
+         ul.appendChild(li);
+   
+         let a = document.createElement('A');
+         a.setAttribute('href', '#');
+         a.textContent = ii;
+         li.appendChild(a);
+         ii++;
       }
+      //select all a elements
+      const links = document.querySelector('ul');
+      
+      
+      // console.log(links.firstElementChild);
+      //remove active class
+      
+         // add event listeners to each link
+      ul.addEventListener('click', (e) => {
+         let targetLink = e.target;
+         let pageIndex = parseInt(targetLink.innerText);
 
-   }
+         showPage(pageIndex, studentList);
+
+         for (let iii = 0; iii < links.length; iii++){
+            let link = links[iii];
+            // add active class to first page
+            link.classList.remove('active');
+   
+            if (link.innerHTML === '1'){
+               link.classList.add('active');
+            }
+         }
+
+       
+         console.log(targetLink);
+         if (targetLink.tagName === 'A' && targetLink.classList !== 'active'){
+            targetLink.classList.add('active');
+         } else {
+            targetLink.classList.remove('active')
+         }
+      });
+      
 
   }
 
