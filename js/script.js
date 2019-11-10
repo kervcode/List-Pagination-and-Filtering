@@ -1,7 +1,3 @@
-/******************************************
-Treehouse Techdegree:
-FSJS project 2 - List Filter and Pagination
-******************************************/
    
 // grab all the the student list in the HTML DOM
 addEventListener('load', () => {
@@ -68,5 +64,6 @@ addEventListener('load', () => {
          showPage(pageIndex, studentList); 
       });
   }
+  
   appendPageLinks(studentList);
 });
